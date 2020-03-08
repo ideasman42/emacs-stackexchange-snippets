@@ -1,0 +1,5 @@
+# Compiled
+*.elc
+
+# Python temp paths.
+__pycache__/
