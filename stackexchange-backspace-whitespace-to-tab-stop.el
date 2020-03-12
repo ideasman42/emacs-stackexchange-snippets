@@ -28,16 +28,16 @@
                (back-to-indentation)
                (point))))
       (call-interactively 'backward-delete-char)
-    (let ((movement (% (current-column) tab-width))
-          (p (point)))
-      (when (= movement 0)
-        (setq movement tab-width))
+    (let ((step (% (current-column) tab-width))
+          (pt (point)))
+      (when (zerop step)
+        (setq step tab-width))
       ;; Account for edge case near beginning of buffer.
-      (setq movement (min (- p 1) movement))
+      (setq step (min (- pt 1) step))
       (save-match-data
         (if (string-match "[^\t ]*\\([\t ]+\\)$"
                           (buffer-substring-no-properties
-                           (- p movement) p))
+                           (- pt step) pt))
             (backward-delete-char (- (match-end 1)
                                      (match-beginning 1)))
           (call-interactively 'backward-delete-char))))))
