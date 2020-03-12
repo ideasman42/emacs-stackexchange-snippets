@@ -50,8 +50,8 @@ Then, select the packages you want to use.
 
 .. code-block:: elisp
 
-   (let ((se-dir (concat user-emacs-directory
-                         (file-name-as-directory "emacs-stackexchange-snippets"))))
+   (let ((se-dir (expand-file-name "emacs-stackexchange-snippets"
+                                   user-emacs-directory)))
      (if (file-directory-p se-dir)
          (dolist
              (se-item
@@ -61,7 +61,7 @@ Then, select the packages you want to use.
                "stackexchange-scratch-buffer-from-file"
                "stackexchange-transpose-args"
                "stackexchange-transpose-words"))
-           (load (concat se-dir se-item) :nomessage t))
+           (load (expand-file-name se-item se-dir) :nomessage nil))
        (message "StackExchange package missing at %S" se-dir)))
 
 
