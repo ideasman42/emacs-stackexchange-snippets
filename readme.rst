@@ -64,6 +64,10 @@ Then, select the packages you want to use.
            (load (expand-file-name se-item se-dir) :nomessage nil))
        (message "StackExchange package missing at %S" se-dir)))
 
+.. note::
+
+   It would good to support using existing package managers too.
+
 
 Package List
 ============
@@ -130,6 +134,7 @@ as well as a brief explanation of what it does and why it's useful.
 TODO
 ====
 
+- Investigate using existing package managers to selectively load functionality.
 - Generate auto-loads.
 - Byte code-compile elisp files.
 - Expose a way to update these packages from Emacs.
