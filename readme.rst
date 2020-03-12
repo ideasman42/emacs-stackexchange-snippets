@@ -92,8 +92,6 @@ The current list of packages are as follows:
    Revert all buffers, with progress output.
 `stackexchange-scratch-buffer-from-file <https://emacs.stackexchange.com/a/38709>`__
    Use a file for the scratch buffer on startup.
-`stackexchange-shell-command-on-region-and-select <https://emacs.stackexchange.com/a/34900>`__
-   Run command on region, keeping the selection.
 `stackexchange-sort-line-in-block <https://emacs.stackexchange.com/a/54023>`__
    Sort a single line within a block.
 `stackexchange-transpose-words <https://emacs.stackexchange.com/a/54055>`__
