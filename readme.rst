@@ -72,6 +72,8 @@ The current list of packages are as follows:
 
 .. BEGIN PACKAGE LIST
 
+`stackexchange-backspace-whitespace-to-tab-stop <https://emacs.stackexchange.com/a/56084>`__
+   Backspace to tab-stop or single character.
 `stackexchange-c-transpose-args <https://emacs.stackexchange.com/a/47934>`__
    Transpose comma separated arguments (C family languages).
 `stackexchange-compile-context-sensitive <https://emacs.stackexchange.com/a/56008>`__
