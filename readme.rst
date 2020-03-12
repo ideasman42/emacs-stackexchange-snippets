@@ -120,6 +120,13 @@ This can be done by running:
    python3 _maintanance/update_from_stackexchange.py
 
 
+Contributing
+============
+
+For contributions, open a new issue with a link to the stack-exchange code-snippet you wish to include,
+as well as a brief explanation of what it does and why it's useful.
+
+
 TODO
 ====
 
