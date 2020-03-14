@@ -86,6 +86,8 @@ The current list of packages are as follows:
    Delete surrounding brackets.
 `stackexchange-frame-urgent-hint-set <https://emacs.stackexchange.com/a/56037>`__
    Visual bell using mode-line.
+`stackexchange-imenu-goto <https://emacs.stackexchange.com/a/33747>`__
+   Go to next/previous imenu item.
 `stackexchange-ispell-word-immediate <https://emacs.stackexchange.com/a/55545>`__
    Correct spelling without prompting.
 `stackexchange-mode-line-visual-bell <https://emacs.stackexchange.com/a/55988>`__
