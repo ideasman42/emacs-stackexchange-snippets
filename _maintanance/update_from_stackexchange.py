@@ -77,7 +77,8 @@ def code_block_from_stackexchange_url(
 
     anchor = b'<a name="' + answer_id.encode('utf-8') + b'">'
     if anchor not in data:
-        print(f'URL from {filepath:s} misses {anchor:r}')
+        print(f'URL misses {anchor!r}')
+        return None
 
     data_strip = data.split(anchor, 1)[1]
 
