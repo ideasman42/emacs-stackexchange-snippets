@@ -72,7 +72,7 @@ Then, select the packages you want to use.
 Package List
 ============
 
-The current list of packages are as follows:
+The current list of packages and their authors are as follows:
 
 .. BEGIN PACKAGE LIST
 
@@ -131,6 +131,13 @@ Contributing
 
 For contributions, open a new issue with a link to the stack-exchange code-snippet you wish to include,
 as well as a brief explanation of what it does and why it's useful.
+
+License
+=======
+
+- The stack-exchange snippets are licensed `CC-by-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>`__
+  unless stated otherwise.
+- Other utilities in this repository are licensed GPL-v3 or later.
 
 
 TODO
