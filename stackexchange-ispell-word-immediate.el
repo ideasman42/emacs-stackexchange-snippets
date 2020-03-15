@@ -4,6 +4,7 @@
 
 ;; {
 ;;   'url': 'https://emacs.stackexchange.com/a/55545',
+;;   'author': ('ideasman42', ),
 ;;   'replace': (
 ;;     (r'\bispell-word-immediate\b', 'stackexchange-ispell-word-immediate'),
 ;;     # Auto-load functions without a '--'.

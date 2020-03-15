@@ -4,6 +4,7 @@
 
 ;; {
 ;;   'url': 'https://emacs.stackexchange.com/a/50730',
+;;   'author': ('drew', 'ideasman42'),
 ;;   'replace': (
 ;;     (r'\brevert-all-buffers\b', 'stackexchange-revert-all-buffers'),
 ;;     # Auto-load functions without a '--'.

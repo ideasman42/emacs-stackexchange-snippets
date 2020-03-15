@@ -188,9 +188,14 @@ def update_readme_from_files(root, files, readme_file):
         if recipe is None:
             continue
 
+        author = ', '.join([
+            '@' + author.split(':')[0]
+            for author in recipe['author']
+        ])
+
         url = recipe['url']
         readme_lines += [
-            f'`{filename_no_ext} <{url}>`__',
+            f'`{filename_no_ext} <{url}>`__ *({author})*',
             f'   {terse_description}.',
         ]
 

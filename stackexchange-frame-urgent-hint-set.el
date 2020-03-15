@@ -4,6 +4,7 @@
 
 ;; {
 ;;   'url': 'https://emacs.stackexchange.com/a/56037',
+;;   'author': ('arne-babenhauserheide', ),
 ;;   'replace': (
 ;;     (r'\bmy-', 'stackexchange-'),
 ;;     # Auto-load functions without a '--'.

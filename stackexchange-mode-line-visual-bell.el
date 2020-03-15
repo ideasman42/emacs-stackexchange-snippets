@@ -4,6 +4,7 @@
 
 ;; {
 ;;   'url': 'https://emacs.stackexchange.com/a/55988',
+;;   'author': ('ideasman42', ),
 ;;   'replace': (
 ;;     (r'\bmode-line-visual-bell\b', 'stackexchange-mode-line-visual-bell'),
 ;;     # Auto-load functions without a '--'.

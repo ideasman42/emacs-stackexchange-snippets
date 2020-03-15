@@ -4,6 +4,7 @@
 
 ;; {
 ;;   'url': 'https://emacs.stackexchange.com/a/38709',
+;;   'author': ('ideasman42', ),
 ;;   'replace': (
 ;;     (r'\bmy-scratch-buffer-from-file\b', 'stackexchange-scratch-buffer-from-file'),
 ;;     # Auto-load functions without a '--'.

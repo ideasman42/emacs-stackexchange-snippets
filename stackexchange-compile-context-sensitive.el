@@ -4,6 +4,7 @@
 
 ;; {
 ;;   'url': 'https://emacs.stackexchange.com/a/56008',
+;;   'author': ('ideasman42', ),
 ;;   'replace': (
 ;;     (r'\bmy-compile-context-sensitive\b', 'stackexchange-compile-context-sensitive'),
 ;;     # Auto-load functions without a '--'.

@@ -4,6 +4,7 @@
 
 ;; {
 ;;   'url': 'https://emacs.stackexchange.com/a/54023',
+;;   'author': ('ideasman42', ),
 ;;   'replace': (
 ;;     (r'\bsort-line-in-block\b', 'stackexchange-sort-line-in-block'),
 ;;     # Auto-load functions without a '--'.

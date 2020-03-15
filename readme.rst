@@ -76,31 +76,31 @@ The current list of packages are as follows:
 
 .. BEGIN PACKAGE LIST
 
-`stackexchange-backspace-whitespace-to-tab-stop <https://emacs.stackexchange.com/a/56084>`__
+`stackexchange-backspace-whitespace-to-tab-stop <https://emacs.stackexchange.com/a/56084>`__ *(@trey-jackson)*
    Backspace to tab-stop or single character.
-`stackexchange-c-transpose-args <https://emacs.stackexchange.com/a/47934>`__
+`stackexchange-c-transpose-args <https://emacs.stackexchange.com/a/47934>`__ *(@tobias, @ideasman42)*
    Transpose comma separated arguments (C family languages).
-`stackexchange-compile-context-sensitive <https://emacs.stackexchange.com/a/56008>`__
+`stackexchange-compile-context-sensitive <https://emacs.stackexchange.com/a/56008>`__ *(@ideasman42)*
    Context sensitive build command.
-`stackexchange-delete-surround-at-point <https://emacs.stackexchange.com/a/54679>`__
+`stackexchange-delete-surround-at-point <https://emacs.stackexchange.com/a/54679>`__ *(@gilles-so-stop-being-evil, @ideasman42)*
    Delete surrounding brackets.
-`stackexchange-frame-urgent-hint-set <https://emacs.stackexchange.com/a/56037>`__
+`stackexchange-frame-urgent-hint-set <https://emacs.stackexchange.com/a/56037>`__ *(@arne-babenhauserheide)*
    Visual bell using mode-line.
-`stackexchange-imenu-goto <https://emacs.stackexchange.com/a/33747>`__
+`stackexchange-imenu-goto <https://emacs.stackexchange.com/a/33747>`__ *(@ahleung)*
    Go to next/previous imenu item.
-`stackexchange-ispell-word-immediate <https://emacs.stackexchange.com/a/55545>`__
+`stackexchange-ispell-word-immediate <https://emacs.stackexchange.com/a/55545>`__ *(@ideasman42)*
    Correct spelling without prompting.
-`stackexchange-mode-line-visual-bell <https://emacs.stackexchange.com/a/55988>`__
+`stackexchange-mode-line-visual-bell <https://emacs.stackexchange.com/a/55988>`__ *(@ideasman42)*
    Visual bell using mode line.
-`stackexchange-neotree-project-dir-toggle <https://emacs.stackexchange.com/a/29500>`__
+`stackexchange-neotree-project-dir-toggle <https://emacs.stackexchange.com/a/29500>`__ *(@xakz, @ideasman42)*
    Toggle neotree in the project root.
-`stackexchange-revert-all-buffers <https://emacs.stackexchange.com/a/50730>`__
+`stackexchange-revert-all-buffers <https://emacs.stackexchange.com/a/50730>`__ *(@drew, @ideasman42)*
    Revert all buffers, with progress output.
-`stackexchange-scratch-buffer-from-file <https://emacs.stackexchange.com/a/38709>`__
+`stackexchange-scratch-buffer-from-file <https://emacs.stackexchange.com/a/38709>`__ *(@ideasman42)*
    Use a file for the scratch buffer on startup.
-`stackexchange-sort-line-in-block <https://emacs.stackexchange.com/a/54023>`__
+`stackexchange-sort-line-in-block <https://emacs.stackexchange.com/a/54023>`__ *(@ideasman42)*
    Sort a single line within a block.
-`stackexchange-transpose-words <https://emacs.stackexchange.com/a/54055>`__
+`stackexchange-transpose-words <https://emacs.stackexchange.com/a/54055>`__ *(@ideasman42)*
    Transpose words, keeping the cursor location.
 
 .. END PACKAGE LIST

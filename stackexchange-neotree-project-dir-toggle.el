@@ -4,6 +4,7 @@
 
 ;; {
 ;;   'url': 'https://emacs.stackexchange.com/a/29500',
+;;   'author': ('xakz:github', 'ideasman42'),
 ;;   'replace': (
 ;;     (r'\bmy-', 'stackexchange-'),
 ;;     # Auto-load functions without a '--'.

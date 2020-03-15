@@ -4,6 +4,7 @@
 
 ;; {
 ;;   'url': 'https://emacs.stackexchange.com/a/47934',
+;;   'author': ('tobias', 'ideasman42'),
 ;;   'replace': (
 ;;     (r'\bmy-c-transpose-args-', 'stackexchange-c-transpose-args-'),
 ;;     # Auto-load functions without a '--'.

@@ -4,6 +4,7 @@
 
 ;; {
 ;;   'url': 'https://emacs.stackexchange.com/a/54055',
+;;   'author': ('ideasman42', ),
 ;;   'replace': (
 ;;     (r'\btranspose-words-', 'stackexchange-transpose-words-'),
 ;;     # Auto-load functions without a '--'.

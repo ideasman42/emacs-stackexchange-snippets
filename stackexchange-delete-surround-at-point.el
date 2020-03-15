@@ -4,6 +4,7 @@
 
 ;; {
 ;;   'url': 'https://emacs.stackexchange.com/a/54679',
+;;   'author': ('gilles-so-stop-being-evil', 'ideasman42'),
 ;;   'replace': (
 ;;     (r'\bmy-delete-surround-at-point\b', 'stackexchange-delete-surround-at-point'),
 ;;     # Auto-load functions without a '--'.
