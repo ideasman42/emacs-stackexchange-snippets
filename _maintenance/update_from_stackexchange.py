@@ -195,7 +195,7 @@ def update_readme_from_files(root, files, readme_file):
 
         url = recipe['url']
         readme_lines += [
-            f'`{filename_no_ext} <{url}>`__ *({author})*',
+            f'`{filename_no_ext} <{url}>`__ *by {author}*',
             f'   {terse_description}.',
         ]
 
