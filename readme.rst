@@ -80,6 +80,8 @@ The current list of packages and their authors are as follows:
    Backspace to tab-stop or single character.
 `stackexchange-c-transpose-args <https://emacs.stackexchange.com/a/47934>`__ *by @tobias, @ideasman42*
    Transpose comma separated arguments (C family languages).
+`stackexchange-comment-multi-line-toggle <https://emacs.stackexchange.com/a/56285>`__ *by @ideasman42*
+   Toggle multi-line comments around the selection.
 `stackexchange-compile-context-sensitive <https://emacs.stackexchange.com/a/56008>`__ *by @ideasman42*
    Context sensitive build command.
 `stackexchange-delete-surround-at-point <https://emacs.stackexchange.com/a/54679>`__ *by @gilles-so-stop-being-evil, @ideasman42*

@@ -18,7 +18,7 @@
 ;; of the current buffer and run the appropriate build command.
 ;;
 ;; Useful when switching between projects which don't
-;; have a single build-system that can be assosiated with the mode.
+;; have a single build-system that can be associated with the mode.
 ;; As well as non-code projects which have a make-files to
 ;; generate output.
 ;;
