@@ -65,7 +65,7 @@ Returns a triplet (dir, filename, id) or nil if nothing is found.
 
     (if mk-dir-file-id
         (pcase-let ((`(,dir ,file ,id) mk-dir-file-id))
-          ;; ensure 'compile-command' is used.
+          ;; Ensure 'compile-command' is used.
           (let ((compilation-read-command nil)
                 (compile-command
                  (cond

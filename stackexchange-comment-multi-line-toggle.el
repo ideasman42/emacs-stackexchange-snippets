@@ -24,8 +24,8 @@
 
 (defun stackexchange-comment-multi-line-toggle--impl (head tail head-regex tail-regex)
   "Utility for toggling multi-line comments.
-Argument HEAD-ADD Start of multi-line comment.
-Argument TAIL-ADD End of multi-line comment.
+Argument HEAD Start of multi-line comment.
+Argument TAIL End of multi-line comment.
 Argument HEAD-REGEX Match the start of a multi-line comment.
 Argument TAIL-REGEX Match the end of a multi-line comment."
   (unless (region-active-p)
@@ -107,7 +107,7 @@ Argument TAIL-REGEX Match the end of a multi-line comment."
      "#[["
      "]]"
      "^[[:blank:]]*#\\[\\[[[:blank:]]*$"
-     "^[[:blank:]]\\]\\][[:blank:]]*$"))
+     "^[[:blank:]]*\\]\\][[:blank:]]*$"))
    ((member major-mode '(python-mode))
     (stackexchange-comment-multi-line-toggle--impl
      "'''"

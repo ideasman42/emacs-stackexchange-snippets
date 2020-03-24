@@ -43,7 +43,7 @@
 
 (defun stackexchange-ispell-word-immediate--impl (cycle-direction)
   "Run `ispell-word', using the first suggestion.
-Argument CYCLE-DIRECTION The offset for cycling words, 1 or -1 for forwards/backwards."
+Argument CYCLE-DIRECTION The offset for cycling words, 1 or -1 for forward/backward."
   (let ((message-list (list))
         (index 0)
         (point-init (point))
@@ -54,8 +54,8 @@ Argument CYCLE-DIRECTION The offset for cycling words, 1 or -1 for forwards/back
         (and
          stackexchange-ispell-word-immediate--alist
          (or
-          (eq last-command 'stackexchange-ispell-word-immediate-forwards)
-          (eq last-command 'stackexchange-ispell-word-immediate-backwards)))
+          (eq last-command 'stackexchange-ispell-word-immediate-forward)
+          (eq last-command 'stackexchange-ispell-word-immediate-backward)))
 
       ;; Roll-back correction.
       (let ((alist stackexchange-ispell-word-immediate--alist))
@@ -128,14 +128,14 @@ Argument CYCLE-DIRECTION The offset for cycling words, 1 or -1 for forwards/back
 
 ;; Public functions.
 ;;;###autoload
-(defun stackexchange-ispell-word-immediate-forwards ()
-  "Run `ispell-word', using the first suggestion, or cycle forwards."
+(defun stackexchange-ispell-word-immediate-forward ()
+  "Run `ispell-word', using the first suggestion, or cycle forward."
   (interactive)
   (stackexchange-ispell-word-immediate--impl 1))
 
 ;;;###autoload
-(defun stackexchange-ispell-word-immediate-backwards ()
-  "Run `ispell-word', using the first suggestion, or cycle backwards."
+(defun stackexchange-ispell-word-immediate-backward ()
+  "Run `ispell-word', using the first suggestion, or cycle backward."
   (interactive)
   (stackexchange-ispell-word-immediate--impl -1))
 
