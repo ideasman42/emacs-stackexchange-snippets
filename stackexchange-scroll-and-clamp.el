@@ -22,25 +22,35 @@
 
 ;;; Code:
 
-;; Scrolling that re-centers, keeping the cursor centered.
-;; Also clamps window top when scrolling down, so the text doesn't scroll off-screen.
-(defvar-local stackexchange-scroll-and-clamp--column nil)
+;; Scrolling that re-centers, keeping the cursor vertically centered.
+;; Also clamps window top when scrolling down,
+;; so the text doesn't scroll off-screen.
 
-(defun stackexchange-scroll-and-clamp--column-update ()
-  (unless (member last-command '(stackexchange-scroll-and-clamp-up-command stackexchange-scroll-and-clamp-down-command))
-    (setq stackexchange-scroll-and-clamp--column nil))
-  (unless stackexchange-scroll-and-clamp--column
-    (setq stackexchange-scroll-and-clamp--column (current-column))))
+(defun stackexchange-scroll-and-clamp--forward-line (n)
+  "Wrap `forward-line', supporting Emacs built-in goal column.
+Argument N the number of lines, passed to `forward-line'."
+  (let ((next-column
+         (or goal-column
+             (and (memq last-command
+                        '(next-line previous-line line-move))
+                  (if (consp temporary-goal-column)
+                      (car temporary-goal-column)
+                    temporary-goal-column)))))
+    (unless next-column
+      (setq temporary-goal-column (current-column))
+      (setq next-column temporary-goal-column))
+    (forward-line n)
+    (move-to-column next-column))
+  ;; Needed so `temporary-goal-column' is respected in the future.
+  (setq this-command 'line-move))
 
 ;;;###autoload
 (defun stackexchange-scroll-and-clamp-up-command ()
   (interactive)
-  (stackexchange-scroll-and-clamp--column-update)
   (let ((height (window-height)))
 
     ;; Move point.
-    (forward-line height)
-    (move-to-column stackexchange-scroll-and-clamp--column)
+    (stackexchange-scroll-and-clamp--forward-line height)
 
     ;; Move window.
     (set-window-start
@@ -59,12 +69,11 @@
 ;;;###autoload
 (defun stackexchange-scroll-and-clamp-down-command ()
   (interactive)
-  (stackexchange-scroll-and-clamp--column-update)
   (let* ((height (window-height)))
 
     ;; Move point.
-    (forward-line (- height))
-    (move-to-column stackexchange-scroll-and-clamp--column)
+    (stackexchange-scroll-and-clamp--forward-line (- height))
+    (setq this-command 'line-move)
 
     ;; Move window.
     (set-window-start
