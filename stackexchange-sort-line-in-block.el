@@ -55,8 +55,10 @@ Blocks are delimited by empty lines.
           (let ((keep-looking (null pt-found)))
             (while keep-looking
               (setq keep-looking nil)
-              (forward-line dir)
-              (when (eq indent-init (current-indentation))
+              ;; Check forward-line has no line
+              ;; remainder to account for buffer min/max.
+              (when (and (eq 0 (forward-line dir))
+                         (eq indent-init (current-indentation)))
                 (let ((line-cmp
                        (buffer-substring-no-properties
                         (line-beginning-position) (line-end-position))))
