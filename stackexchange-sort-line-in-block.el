@@ -32,7 +32,7 @@
 (defun stackexchange-sort-line-in-block ()
   "Sort the current line relative to surrounding lines in the same block.
 
-Blocks are delimited by empty lines.
+Blocks are delimited by empty lines or buffer extents.
 "
   (interactive)
   (let* ((pt-init (point))

@@ -32,10 +32,13 @@ Buffers which no longer exist are closed.
 
 This can be useful when updating or checking out branches outside of Emacs."
   (interactive)
-  (let* ((filename-and-buffer-list ;; pairs of (filename, buf)
-          (mapcar
-           (lambda (buf) (list (buffer-file-name buf) buf))
-           (seq-filter 'buffer-file-name (buffer-list))))
+  (let* ((filename-and-buffer-list ;; Pairs of '(filename . buf)'.
+          (let ((temp-list nil))
+            (dolist (buf (buffer-list))
+              (let ((filename (buffer-file-name buf)))
+                (when filename
+                  (push (cons filename buf) temp-list))))
+            temp-list))
 
          (count (length filename-and-buffer-list))
          (count-final 0)
@@ -50,10 +53,11 @@ This can be useful when updating or checking out branches outside of Emacs."
 
     (message "Begin reverting %d buffers..." count)
     (while filename-and-buffer-list
-      (pcase-let ((`(,filename ,buf) (pop filename-and-buffer-list)))
+      (pcase-let ((`(,filename . ,buf) (pop filename-and-buffer-list)))
         ;; Revert only buffers containing files, which are not modified;
         ;; do not try to revert non-file buffers such as '*Messages*'.
-        (message format-text index count (round (* 100 (/ (float index) count))) filename)
+        (message format-text
+                 index count (round (* 100 (/ (float index) count))) filename)
         (if (file-exists-p filename)
             ;; If the file exists, revert the buffer.
             (if (with-demoted-errors "Error: %S"
@@ -72,14 +76,15 @@ This can be useful when updating or checking out branches outside of Emacs."
                         (unless no-undo
                           ;; It's possible a plugin loads undo data from disk,
                           ;; check if this is still unset.
-                          (when (and (eq buffer-undo-list t) (null pending-undo-list))
+                          (when (and (eq buffer-undo-list t)
+                                     (null pending-undo-list))
                             (setq buffer-undo-list nil))))))
                   t)
                 (setq count-final (1+ count-final))
               (setq count-error (1+ count-error)))
 
           ;; If the file doesn't exist, kill the buffer.
-          (let (kill-buffer-query-functions) ; No query done when killing buffer.
+          (let (kill-buffer-query-functions) ;; No query done when killing buffer.
             (message "Closing non-existing file buffer: %s" buf)
             (kill-buffer buf)
             (setq count-close (1+ count-close))))
