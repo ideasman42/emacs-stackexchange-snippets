@@ -147,6 +147,8 @@ def update_from_stackexchange(filepath, *, use_cache=False):
         '&gt;', '>',
     ).replace(
         '&amp;', '&',
+    ).replace(
+        '&quot;', '"',
     )
 
     # Run replacements:
