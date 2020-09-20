@@ -22,7 +22,7 @@
 ;;
 ;; Example usage:
 ;;
-;;   (my-startup-buffer-from-file)
+;;   (stackexchange-scratch-buffer-from-file)
 ;;
 ;; Or if you like to use an org-mode scratch buffer,
 ;; an option file path can be passed in.
