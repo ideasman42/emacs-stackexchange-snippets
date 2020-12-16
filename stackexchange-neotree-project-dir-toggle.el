@@ -33,6 +33,7 @@
   "Open NeoTree using the project root, using projectile, find-file-in-project,
 or the current buffer directory."
   (interactive)
+  (require 'neotree)
   (let* ((filepath (buffer-file-name))
          (project-dir
           (with-demoted-errors

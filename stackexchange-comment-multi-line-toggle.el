@@ -28,7 +28,7 @@ Argument HEAD Start of multi-line comment.
 Argument TAIL End of multi-line comment.
 Argument HEAD-REGEX Match the start of a multi-line comment.
 Argument TAIL-REGEX Match the end of a multi-line comment."
-  (unless (region-active-p)
+  (unless (use-region-p)
     (user-error "No active region"))
   (let ((beg (region-beginning))
         (end (region-end))
@@ -43,13 +43,13 @@ Argument TAIL-REGEX Match the end of a multi-line comment."
         (if (and (setq match-head
                        (save-match-data
                          (goto-char beg)
-                         (skip-chars-forward "[:space:]")
+                         (skip-chars-forward "[:blank:]")
                          (when (looking-at head-regex)
                            (match-data))))
                  (setq match-tail
                        (save-match-data
                          (goto-char end)
-                         (skip-chars-backward "[:space:]")
+                         (skip-chars-backward "[:blank:]")
                          (when (looking-back tail-regex)
                            (match-data))))
                  ;; Double check there is no overlap.
@@ -67,7 +67,7 @@ Argument TAIL-REGEX Match the end of a multi-line comment."
                 (goto-char (match-beginning 0))
                 (replace-match "" t nil nil))
               (beginning-of-line)
-              (when (looking-at-p "[[:space:]]*$")
+              (when (looking-at-p "[[:blank:]]*$")
                 (kill-whole-line)))
 
           ;; Add multi-line comment.

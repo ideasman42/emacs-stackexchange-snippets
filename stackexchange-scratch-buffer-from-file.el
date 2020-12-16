@@ -69,7 +69,7 @@
                   (if comment-start
                       ;; Ensure one trailing space (some comments include space).
                       (concat
-                       (replace-regexp-in-string "[[:space:]]*$" "" comment-start)
+                       (replace-regexp-in-string "[[:blank:]]*$" "" comment-start)
                        " ")
                     "")))
              (if (file-exists-p filename)

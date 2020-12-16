@@ -23,7 +23,7 @@
 (defun stackexchange-backspace-whitespace-to-tab-stop ()
   "Delete whitespace backwards to the next tab-stop, otherwise delete one character."
   (interactive)
-  (if (or indent-tabs-mode (region-active-p)
+  (if (or indent-tabs-mode (use-region-p)
           (> (point)
              (save-excursion
                (back-to-indentation)
