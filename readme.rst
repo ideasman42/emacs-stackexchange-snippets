@@ -96,8 +96,6 @@ The current list of packages and their authors are as follows:
    Visual bell using mode line.
 `stackexchange-neotree-project-dir-toggle <https://emacs.stackexchange.com/a/29500>`__ *by @xakz, @ideasman42*
    Toggle neotree in the project root.
-`stackexchange-revert-all-buffers <https://emacs.stackexchange.com/a/50730>`__ *by @drew, @ideasman42*
-   Revert all buffers, with progress output.
 `stackexchange-scratch-buffer-from-file <https://emacs.stackexchange.com/a/38709>`__ *by @ideasman42*
    Use a file for the scratch buffer on startup.
 `stackexchange-scroll-and-clamp <https://emacs.stackexchange.com/a/57639>`__ *by @ideasman42*

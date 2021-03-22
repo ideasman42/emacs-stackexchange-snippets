@@ -61,8 +61,10 @@
            (buffer-disable-undo)
 
            ;; Set the mode based on the filename, users may use filenames that infer modes.
-           (let ((buffer-file-name filename))
-             (set-auto-mode t))
+           (condition-case err
+               (let ((buffer-file-name filename))
+                 (set-auto-mode t))
+             (error (message "Unable to activate mode: %s" err)))
 
            ;; Use the comment character set by the mode where possible.
            (let ((comment-start-or-empty
