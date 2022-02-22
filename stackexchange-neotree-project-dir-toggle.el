@@ -36,7 +36,7 @@ or the current buffer directory."
   (require 'neotree)
   (let* ((filepath (buffer-file-name))
          (project-dir
-          (with-demoted-errors
+          (with-demoted-errors "neotree-project-dir-toggle error: %S"
               (cond
                ((featurep 'projectile)
                 (projectile-project-root))
