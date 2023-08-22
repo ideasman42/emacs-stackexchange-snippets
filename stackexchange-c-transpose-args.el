@@ -28,6 +28,20 @@
 
 ;;; Code:
 
+(defun stackexchange-c-transpose-args--ensure-bounds-begin ()
+  "Ensure the cursor is at the beginning of the symbol/bounds."
+  ;; NOTE: this is needed when moving arguments that themselves contain an
+  ;; S-expression, e.g.
+  ;;   function(array[i], a, b);
+  ;;             ^
+  ;; In this case it's important for the cursor to be at the argument start.
+  (let ((bounds (bounds-of-thing-at-point 'symbol)))
+    (cond
+     (bounds
+      (car bounds))
+     (t
+      nil))))
+
 (defun stackexchange-c-transpose-args--forward-to-argsep ()
   "Move to the end of the current c function argument.
 Returns point."
@@ -56,7 +70,17 @@ Returns point."
   "Transpose two arguments of a c-function.
 The first arg is the one with point in it."
   (interactive)
+
   (let* ((pt-original (point)) ;; only different to pt when not 'is_forward'
+         (pt-offset
+          (let ((pt-bounds (stackexchange-c-transpose-args--ensure-bounds-begin)))
+            (cond
+             (pt-bounds
+              (goto-char pt-bounds)
+              (- pt-original pt-bounds))
+             (t
+              0))))
+
          (pt (progn
                (when (not is_forward)
                  (goto-char (- (stackexchange-c-transpose-args--backward-to-argsep) 1))
@@ -97,12 +121,17 @@ The first arg is the one with point in it."
           ;; word start.
           (- (point) (length first))
           ;; Apply initial offset within the word.
-          (- pt b (length ws-first))))
+          (- pt b (length ws-first))
+          ;; Apply any offset.
+          pt-offset
+          ))
       (goto-char
        (+
         b (length ws-first)
         ;; Apply initial offset within the word.
-        (- pt-original (+ pt 1 (length ws-second))))))))
+        (- pt-original (+ pt  1 (length ws-second) (- pt-offset)))
+        ;; Apply any offset.
+        (- pt-offset))))))
 
 ;;;###autoload
 (defun stackexchange-c-transpose-args-forward ()
