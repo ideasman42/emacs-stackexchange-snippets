@@ -28,36 +28,20 @@
 
 ;;; Code:
 
-(defun stackexchange-c-transpose-args--ensure-bounds-begin ()
-  "Ensure the cursor is at the beginning of the symbol/bounds."
-  ;; NOTE: this is needed when moving arguments that themselves contain an
-  ;; S-expression, e.g.
-  ;;   function(array[i], a, b);
-  ;;             ^
-  ;; In this case it's important for the cursor to be at the argument start.
-  (let ((bounds (bounds-of-thing-at-point 'symbol)))
-    (cond
-     (bounds
-      (car bounds))
-     (t
-      nil))))
-
 (defun stackexchange-c-transpose-args--forward-to-argsep ()
   "Move to the end of the current c function argument.
 Returns point."
-  (interactive)
   (while (progn
            (comment-forward most-positive-fixnum)
-           (looking-at "[^,)]"))
+           (looking-at-p "[^,)]"))
     (forward-sexp))
   (point))
 
 (defun stackexchange-c-transpose-args--backward-to-argsep ()
   "Move to the beginning of the current c function argument.
 Returns point."
-  (interactive)
   (let ((pt (point))
-        cur)
+        (cur nil))
     (up-list -1)
     (forward-char)
     (while (progn
@@ -69,22 +53,26 @@ Returns point."
 (defun stackexchange-c-transpose-args--direction (is_forward)
   "Transpose two arguments of a c-function.
 The first arg is the one with point in it."
-  (interactive)
-
   (let* ((pt-original (point)) ;; only different to pt when not 'is_forward'
          (pt-offset
-          (let ((pt-bounds (stackexchange-c-transpose-args--ensure-bounds-begin)))
+          (let ((pt-bounds (bounds-of-thing-at-point 'symbol)))
             (cond
+             ;; Ensure the cursor is at the beginning of the symbol/bounds.
+             ;; NOTE: this is needed when moving arguments that themselves
+             ;; contain an S-expression, e.g.
+             ;;   function(array[i], a, b);
+             ;;             ^
+             ;; In this case it's important for the cursor to be at the
+             ;; argument start.
              (pt-bounds
-              (goto-char pt-bounds)
-              (- pt-original pt-bounds))
+              (goto-char (car pt-bounds))
+              (- pt-original (car pt-bounds)))
              (t
               0))))
-
          (pt (progn
                (when (not is_forward)
                  (goto-char (- (stackexchange-c-transpose-args--backward-to-argsep) 1))
-                 (unless (looking-at ",")
+                 (unless (looking-at-p ",")
                    (goto-char pt-original)
                    (user-error "Argument separator not found")))
                (point)))
@@ -93,7 +81,7 @@ The first arg is the one with point in it."
                 (goto-char pt)
                 (stackexchange-c-transpose-args--forward-to-argsep)))
          (e (progn
-              (unless (looking-at ",")
+              (unless (looking-at-p ",")
                 (goto-char pt-original)
                 (user-error "Argument separator not found"))
               (forward-char)
@@ -115,28 +103,27 @@ The first arg is the one with point in it."
     (insert ws-first second "," ws-second first)
 
     ;; Correct the cursor location to be on the same character.
-    (if is_forward
-        (goto-char
-         (+
-          ;; word start.
-          (- (point) (length first))
-          ;; Apply initial offset within the word.
-          (- pt b (length ws-first))
-          ;; Apply any offset.
-          pt-offset
-          ))
-      (goto-char
+    (goto-char
+     (cond
+      (is_forward
+       (+
+        ;; word start.
+        (- (point) (length first))
+        ;; Apply initial offset within the word.
+        (- pt b (length ws-first))
+        ;; Apply any offset.
+        pt-offset))
+      (t
        (+
         b (length ws-first)
         ;; Apply initial offset within the word.
-        (- pt-original (+ pt  1 (length ws-second) (- pt-offset)))
-        ;; Apply any offset.
-        (- pt-offset))))))
+        (- pt-original (+ pt 1 (length ws-second)))))))))
 
 ;;;###autoload
 (defun stackexchange-c-transpose-args-forward ()
   (interactive)
   (stackexchange-c-transpose-args--direction t))
+
 ;;;###autoload
 (defun stackexchange-c-transpose-args-backward ()
   (interactive)
